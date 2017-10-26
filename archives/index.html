@@ -18,21 +18,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.1-BETA">
-    <title>Note to Tech</title>
+    <title>Archives</title>
     <meta name="author" content="Mijian Xu">
     <meta name="keywords" content="">
 
     <link rel="icon" href="https://xumi1993.github.io/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://xumi1993.github.io/index.xml">
+      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://xumi1993.github.io/archives/index.xml">
     
 
     
     <meta name="description" content="Hugo tranquilpeak theme demo">
     <meta property="og:description" content="Hugo tranquilpeak theme demo">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Note to Tech">
-    <meta property="og:url" content="/">
+    <meta property="og:title" content="Archives">
+    <meta property="og:url" content="/archives/">
     <meta property="og:site_name" content="Note to Tech">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Note to Tech">
@@ -189,83 +189,38 @@
   </div>
 </nav>
 
-      
-
       <div id="main" data-behavior="2"
         class="
                hasCoverMetaIn
                ">
-        <section class="postShorten-group main-content-wrap">
+        <div id="archives" class="main-content-wrap">
+          <form id="filter-form" action="#">
+            <input name="date" type="text" class="form-control input--xlarge" placeholder="搜索日期 (YYYY/MM/DD)" autofocus="autofocus">
+          </form>
+          <h5 class="archive-result text-color-base text-xlarge" data-message-zero="" data-message-one="" data-message-other=""></h5>
+<section class="boxes">
+  
+    
+    <div class="archive archive-year box" data-date="2017">
+      <h4 class="archive-title" style="text-decoration: none;">2017</h4>
+      
+        <ul class="archive-posts archive-month" data-date="201710">
+          <h5 class="archive-title" style="text-decoration: none;">十月</h5>
           
+            <li class="archive-post archive-day" data-date="20171026">
+              <a class="archive-post-title" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">SSH 隧道与端口转发</a>
+            </li>
           
-            
-  
-    
+            <li class="archive-post archive-day" data-date="20171026">
+              <a class="archive-post-title" href="https://xumi1993.github.io/post/">Posts</a>
+            </li>
+          
+        </ul>
       
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
-          SSH 隧道与端口转发
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-10-26T21:51:29&#43;08:00">
-        
-  十月 26, 2017
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
-    
-  
-
-
-  </div>
-
     </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <h2 id="ssh-tunnel">SSH tunnel</h2>
-
-<p>中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。</p>
-
-<p></p>
-      <p>
-        <a href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
   
-</article>
-
-          
-          
-
-        </section>
-        <footer id="footer" class="main-content-wrap">
-  <span class="copyrights">
-    &copy; 2017 Mijian Xu. All Rights Reserved
-  </span>
-</footer>
-
+</section>
+        </div>
       </div>
     </div>
     
@@ -401,3 +356,4 @@ $(document).ready(function() {
     
   </body>
 </html>
+

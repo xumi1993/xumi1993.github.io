@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/tags/development/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/tags/linux/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/categories/linux/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/post/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/tags/ssh/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/tags/</loc>
+    <lastmod>2017-10-26T21:51:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
