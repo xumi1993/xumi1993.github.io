@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.1-BETA">
-    <title>SSH 隧道与端口转发</title>
+    <title>发布代码到PyPI</title>
     <meta name="author" content="Mijian Xu">
     <meta name="keywords" content="">
 
@@ -30,25 +30,19 @@
     
 
     
-    <meta name="description" content="SSH tunnel
-
-中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。
+    <meta name="description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
 
 ">
-    <meta property="og:description" content="SSH tunnel
-
-中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。
+    <meta property="og:description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
 
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="SSH 隧道与端口转发">
-    <meta property="og:url" content="/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+    <meta property="og:title" content="发布代码到PyPI">
+    <meta property="og:url" content="/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
     <meta property="og:site_name" content="Note to Tech">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Note to Tech">
-    <meta name="twitter:description" content="SSH tunnel
-
-中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。
+    <meta name="twitter:description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
 
 ">
     
@@ -215,15 +209,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      SSH 隧道与端口转发
+      发布代码到PyPI
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-10-26T21:51:29&#43;08:00">
+      <time itemprop="datePublished" datetime="2017-10-23T21:51:29&#43;08:00">
         
-  十月 26, 2017
+  十月 23, 2017
 
       </time>
     
@@ -232,7 +226,7 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
+      <a class="category-link" href="https://xumi1993.github.io/categories/python">Python</a>
     
   
 
@@ -243,69 +237,95 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <h2 id="ssh-tunnel">SSH tunnel</h2>
-
-<p>中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。</p>
+              <p>作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，<a href="https://pypi.python.org/pypi">PyPI</a>是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过<code>pip install module</code>的方式安装模块了。</p>
 
 <p></p>
 
-<p>举个例子如果有一台接入教育网的服务器，同时我们又可以从公网访问之，那么我们可以从无法接入教育网的客户端与服务器端建立SSH Tunnel。这样客户端也可以访问教育网。这个过程分为两个步骤：<br />
-1. 建立SSHTunnel<br />
-2. 设置本地代理</p>
+<h2 id="生成一个本地的-python-包">生成一个本地的 Python 包</h2>
 
-<h3 id="linux-macos-系统建立ssh-tunnel">Linux/Macos 系统建立SSH Tunnel</h3>
+<ul>
+<li>在本地python目录中新建<code>setup.py</code>文件。<br /></li>
+<li>将源码放置在一个新建的目录中，目录名为模块名。<br /></li>
+<li>在<code>setup.py</code>中写入包的配置信息。</li>
+</ul>
 
-<p>在登录终端时输入</p>
+<pre><code class="language-python">from setuptools import setup, find_packages
 
-<pre><code class="language-Bash">ssh -D 2080 user@server
-</code></pre>
-
-<p>这样就成功建立了服务器端22端口与本地2080的端口的隧道。本地端口可以任意设置这要不与其他服务冲突即可，根据规则自定义端口号应该设置在1000以上。</p>
-
-<h3 id="windows-系统建立ssh-tunnel">Windows 系统建立SSH Tunnel</h3>
-
-<p>Windows操作系统中需要通过客户端建立SSH Tunnel。例如Xshell、Putty。这里以Putty为例<br />
-1. 在Session面板中输入Host Name 或 IP Address<br />
-<img src="https://xumi1993.github.io/img/ssh-tunnel/fig1.png" alt="" /><br />
-2. 在左侧边栏SSH/Tunnels面板设置本地端口号和动态转发<br />
-<img src="https://xumi1993.github.io/img/ssh-tunnel/fig2.png" alt="" /></p>
-
-<p>最后保存配置并连接服务器即可。</p>
-
-<h3 id="设置本地代理服务器">设置本地代理服务器</h3>
-
-<p>这个过程和任何设置代理服务器的方式一样，可以使用IE中默认的代理配置工具，也可以使用各种浏览器的代理工具，这里以Chrome浏览器中SwitchyOmega为例
-<img src="https://xumi1993.github.io/img/ssh-tunnel/fig3.png" alt="" /></p>
-
-<h2 id="通过中间服务器远程连接内网服务器">通过中间服务器远程连接内网服务器</h2>
-
-<p>刚才我们介绍了如何将服务器端口转发到本地。现在设置这样一个场景：<br />
-- 有两台服务器 Server1 和 Server 2; 一台客户端PC Client。<br />
-- Server 1 可以连局域网和公网，Server 2只能连局域网，Client 只能连公网。<br />
-- 我们想通过Client远程登录Server 2<br />
-在这样的场景下我们该如何去做呢，原理上是这样的：我们可以将Server 2的22端口通过Server 1映射到本地的一个自定义端口，然后SSH登录本机的这个端口即可。具体步骤如下：\</p>
-
-<h3 id="1-创建端口转发">1. 创建端口转发</h3>
-
-<p>这里以Linux/Macos系统为例</p>
-
-<pre><code class="language-bash">ssh -N -f -L 127.0.0.1:1022:server2:22 user1@server1
+setup(
+    name = &quot;sft&quot;,
+    version = &quot;0.1&quot;,
+    url = 'https://github.com/xumi1993/SFT',
+    author = 'Mijian Xu',
+    author_email = 'gomijianxu@gmail.com',
+    packages = find_packages(), 
+    package_dir = {'sft':'sft'},
+    entry_points = {'console_scripts':[
+            'get_events = sft.get_events:main',
+            'get_resp = sft.get_resp:main',
+            'get_stations = sft.get_stations:main',
+            'get_synthetics = sft.get_synthetics:main',
+            'get_timeseries = sft.get_timeseries:main',
+            'get_traveltime = sft.get_traveltime:main'
+            ], # 将模块中的函数当作shell命令
+            },
+    include_package_data=True,
+    zip_safe=False
+)
 </code></pre>
 
 <ul>
-<li>-N 表示该命令不执行远程命令</li>
-<li>-f 表示该命令在后台运行</li>
-<li>-L 表示设置端口转发， <code>127.0.0.1:1022</code>为本地的目标端口，<code>server2:22</code>表示将转发局域网内服务器的22号端口</li>
-</ul>
+<li>完成后其目录结构<br />
+<code>SFT</code> &mdash;&mdash; <code>sft</code> &mdash;&mdash; <code>get_events.py</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; <code>get_resp.py</code> <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; ……<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; <code>setup.py</code><br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash;  ……<br /></li>
 
-<h3 id="2-从本地端口登录局域网服务器">2. 从本地端口登录局域网服务器</h3>
+<li><p>由于这个例子只依赖Python标准库，所以如果需要依赖其他第三方模块需要在<code>setup.py</code>中加一个字段：</p>
 
-<p>这时在新的终端中从本地的1022号端口登录即可</p>
-
-<pre><code>ssh user2@127.0.0.1 -p 1022
+<pre><code class="language-python">install_requires=[
+    'Twisted&gt;=13.1.0',
+    'w3lib&gt;=1.17.0',
+    'queuelib',
+    'lxml',
+    'pyOpenSSL',
+    'cssselect&gt;=0.9',
+    'six&gt;=1.5.2',
+    'parsel&gt;=1.1',
+    'PyDispatcher&gt;=2.0.5',
+    'service_identity',
+]
 </code></pre>
 
-<p>注意这里的<code>user2</code>是<code>server2</code>中的用户名而不是本机的</p>
+<h2 id="编译python包">编译Python包</h2>
+
+<p>使用下面命令打包一个源代码的包</p>
+
+<pre><code class="language-python">python setup.py sdist build
+</code></pre>
+
+<p>这样在当前目录的dist文件夹下，就会多出一个以tar.gz结尾的包了。</p></li>
+</ul>
+
+<h2 id="注册pypi">注册PyPI</h2>
+
+<p>打开<a href="https://pypi.python.org/pypi">PyPI</a>官网点击*Register*注册一个账户，记住用户名和密码后面要用。</p>
+
+<h2 id="发布至pypi">发布至PyPI</h2>
+
+<p>官方推荐的方式是用<code>twine</code>模块（我在试用<code>python setup.py sdist upload</code>时没有成功）:<br />
+- 安装<code>twine</code></p>
+
+<pre><code class="language-python">sudo pip install twine
+</code></pre>
+
+<ul>
+<li>上传包
+<code>python
+twine upload dist/*
+</code>
+命令行中会提示输入用户名密码，输入PyPI的用户名密码就发布成功了。</li>
+</ul>
               
             </div>
           </div>
@@ -319,9 +339,7 @@
                     
   <a class="tag tag--primary tag--small" href="https://xumi1993.github.io//tags/development/">Development</a>
 
-  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io//tags/ssh/">SSH</a>
-
-  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io//tags/linux/">Linux</a>
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io//tags/python/">Python</a>
 
                   </div>
                 
@@ -333,7 +351,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -341,7 +359,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/" data-tooltip="发布代码到PyPI">
+                <a class="post-action-btn btn btn--disabled">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -358,19 +376,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -417,7 +435,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -425,7 +443,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/" data-tooltip="发布代码到PyPI">
+                <a class="post-action-btn btn btn--disabled">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -442,19 +460,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -484,19 +502,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Fssh-%25E9%259A%25A7%25E9%2581%2593%25E4%25B8%258E%25E7%25AB%25AF%25E5%258F%25A3%25E8%25BD%25AC%25E5%258F%2591%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Fssh-%25E9%259A%25A7%25E9%2581%2593%25E4%25B8%258E%25E7%25AB%25AF%25E5%258F%25A3%25E8%25BD%25AC%25E5%258F%2591%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Fssh-%25E9%259A%25A7%25E9%2581%2593%25E4%25B8%258E%25E7%25AB%25AF%25E5%258F%25A3%25E8%25BD%25AC%25E5%258F%2591%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
           <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
         </a>
       </li>
@@ -656,9 +674,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/10\/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91\/';
+          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/10\/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi\/';
           
-            this.page.identifier = '\/2017\/10\/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91\/'
+            this.page.identifier = '\/2017\/10\/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi\/'
           
         };
         (function() {
