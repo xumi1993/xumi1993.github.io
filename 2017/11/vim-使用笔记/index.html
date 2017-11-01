@@ -645,25 +645,89 @@ Vim中的搜索和替换同样支持正则表达式。大部分语法与其他�
 </table>
 
 <ul>
-<li><p>表示数量的元字符<br />
-| 模式          | 功能      |
-| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-:|
-|<code>*</code>| 匹配0-任意个
-|<code>\+</code>| 匹配1-任意个
-|<code>\?</code>| 匹配0-1个
-|<code>\{n,m}</code>| 匹配n-m个
-|<code>\{n}</code>|   匹配n个
-|<code>\{n,}</code>|  匹配n-任意个
-|<code>\{,m}</code>| 匹配0-m个</p></li>
-
-<li><p>表示位置的元字符<br />
-| 模式          | 功能      |
-| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-:|
-|<code>$</code>| 匹配行尾
-|<code>^</code>|  匹配行首
-|<code>\&lt;</code>| 匹配单词词首
-|<code>\&gt;</code>| 匹配单词词尾</p></li>
+<li>表示数量的元字符</li>
 </ul>
+
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>*</code></td>
+<td align="center">匹配0-任意个</td>
+</tr>
+
+<tr>
+<td><code>\+</code></td>
+<td align="center">匹配1-任意个</td>
+</tr>
+
+<tr>
+<td><code>\?</code></td>
+<td align="center">匹配0-1个</td>
+</tr>
+
+<tr>
+<td><code>\{n,m}</code></td>
+<td align="center">匹配n-m个</td>
+</tr>
+
+<tr>
+<td><code>\{n}</code></td>
+<td align="center">匹配n个</td>
+</tr>
+
+<tr>
+<td><code>\{n,}</code></td>
+<td align="center">匹配n-任意个</td>
+</tr>
+
+<tr>
+<td><code>\{,m}</code></td>
+<td align="center">匹配0-m个</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>表示位置的元字符</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>$</code></td>
+<td align="center">匹配行尾</td>
+</tr>
+
+<tr>
+<td><code>^</code></td>
+<td align="center">匹配行首</td>
+</tr>
+
+<tr>
+<td><code>\&lt;</code></td>
+<td align="center">匹配单词词首</td>
+</tr>
+
+<tr>
+<td><code>\&gt;</code></td>
+<td align="center">匹配单词词尾</td>
+</tr>
+</tbody>
+</table>
 
 <h3 id="vim-中常用的替换表达式">Vim 中常用的替换表达式</h3>
 
