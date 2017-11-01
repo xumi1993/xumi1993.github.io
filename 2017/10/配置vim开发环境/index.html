@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.1-BETA">
-    <title>发布代码到PyPI</title>
+    <title>配置Vim开发环境</title>
     <meta name="author" content="Mijian Xu">
     <meta name="keywords" content="">
 
@@ -30,19 +30,49 @@
     
 
     
-    <meta name="description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
+    <meta name="description" content="配置一个优秀个开发环境可以极大地提高开发效率，在Linux里Vim是最常用的开发环境之一（emacs也是相当不错的，但鄙人是Vim的忠实粉丝），我们一般所说的开发环境包括了
+
+
+代码高亮
+文件树
+配色方案
+自动缩进
+代码补全
+
+
+这里就Linux中配置这些功能做一个简单的介绍
 
 ">
-    <meta property="og:description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
+    <meta property="og:description" content="配置一个优秀个开发环境可以极大地提高开发效率，在Linux里Vim是最常用的开发环境之一（emacs也是相当不错的，但鄙人是Vim的忠实粉丝），我们一般所说的开发环境包括了
+
+
+代码高亮
+文件树
+配色方案
+自动缩进
+代码补全
+
+
+这里就Linux中配置这些功能做一个简单的介绍
 
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="发布代码到PyPI">
-    <meta property="og:url" content="/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+    <meta property="og:title" content="配置Vim开发环境">
+    <meta property="og:url" content="/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
     <meta property="og:site_name" content="Note to Tech">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Note to Tech">
-    <meta name="twitter:description" content="作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，PyPI是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过pip install module的方式安装模块了。
+    <meta name="twitter:description" content="配置一个优秀个开发环境可以极大地提高开发效率，在Linux里Vim是最常用的开发环境之一（emacs也是相当不错的，但鄙人是Vim的忠实粉丝），我们一般所说的开发环境包括了
+
+
+代码高亮
+文件树
+配色方案
+自动缩进
+代码补全
+
+
+这里就Linux中配置这些功能做一个简单的介绍
 
 ">
     
@@ -209,15 +239,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      发布代码到PyPI
+      配置Vim开发环境
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-10-23T21:51:29&#43;08:00">
+      <time itemprop="datePublished" datetime="2017-10-29T21:51:29&#43;08:00">
         
-  十月 23, 2017
+  十月 29, 2017
 
       </time>
     
@@ -226,7 +256,7 @@
   
     <span>发布在</span>
     
-      <a class="category-link" href="https://xumi1993.github.io/categories/python">Python</a>
+      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
     
   
 
@@ -237,95 +267,191 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，<a href="https://pypi.python.org/pypi">PyPI</a>是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过<code>pip install module</code>的方式安装模块了。</p>
+              <p>配置一个优秀个开发环境可以极大地提高开发效率，在Linux里Vim是最常用的开发环境之一（emacs也是相当不错的，但鄙人是Vim的忠实粉丝），我们一般所说的开发环境包括了</p>
+
+<ul>
+<li>代码高亮</li>
+<li>文件树</li>
+<li>配色方案</li>
+<li>自动缩进</li>
+<li>代码补全</li>
+</ul>
+
+<p>这里就Linux中配置这些功能做一个简单的介绍</p>
 
 <p></p>
 
-<h2 id="生成一个本地的-python-包">生成一个本地的 Python 包</h2>
+<p>Vim中配置这些功能主要分为两种方式：1. 安装插件; 2. 修改配置文件。所以第一件事就是安装插件管理器，因为以后所有的插件都将通过它来安装</p>
+
+<h2 id="插件管理器-vundle">插件管理器：vundle</h2>
+
+<p>vim中很多软件可以通过vundle安装，简化了插件的安装过程，vundle的安装也十分简单。</br>
+项目主页：<a href="https://github.com/VundleVim/Vundle.vim">https://github.com/VundleVim/Vundle.vim</a></p>
+
+<h3 id="安装vundle">安装vundle</h3>
+
+<p>在命令行中输入</p>
+
+<pre><code>git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+</code></pre>
+
+<h3 id="配置vundle">配置vundle</h3>
+
+<p>在<code>~/.vimrc</code>文件顶部输入一下代码，配置vundle</p>
+
+<pre><code class="language-Vim">set nocompatible              &quot; be iMproved, required
+filetype off                  &quot; required
+
+&quot; set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+&quot; 这里放置其他插件
+&quot; 格式为 Plugin 'username/Plugin_name'
+
+call vundle#end()            &quot; required
+filetype plugin indent on    &quot; required
+</code></pre>
+
+<h3 id="安装插件">安装插件</h3>
+
+<p>在刚才输入的代码段<code>call vundle#begin()</code>和<code>call vundle#end()</code>之间放置插件，插入以下代码。</p>
+
+<pre><code class="language-vim">Plugin 'git_name/plugin_name'
+</code></pre>
+
+<blockquote>
+<p>Note: <code>git_name</code>是该插件github的用户名，<code>plugin_name</code>是该插件github的项目名，通常就是插件的名字。
+如果这里不写<code>git_name</code>，vundle默认在<a href="https://github.com/vim-scripts">vim-scripts</a>用户中搜索插件。</p>
+</blockquote>
+
+<p>然后进入Command Mode输入（按Esc键）</p>
+
+<pre><code class="language-vim">:PluginInstall
+</code></pre>
+
+<p>vundle会自动下载安装之前写在<code>~/.vimrc</code>中的插件。</p>
+
+<h2 id="文件树形结构插件-nerdtree">文件树形结构插件：NERDTree</h2>
+
+<p>NERDTree可以让Vim想大多数IDLE一样在窗口一侧显示文件树形结构。Vim中使用窗口分割的方式实现的。分割窗口的切换可以通过<code>&lt;Ctrl-ww&gt;</code>完成。
+项目主页: <a href="https://github.com/scrooloose/nerdtree">https://github.com/scrooloose/nerdtree</a></p>
+
+<h3 id="安装插件-1">安装插件</h3>
 
 <ul>
-<li>在本地python目录中新建<code>setup.py</code>文件。<br /></li>
-<li>将源码放置在一个新建的目录中，目录名为模块名。<br /></li>
-<li>在<code>setup.py</code>中写入包的配置信息。</li>
+<li>在<code>~/.vimrc</code>的<code>vundle</code>段中添加</li>
 </ul>
 
-<pre><code class="language-python">from setuptools import setup, find_packages
-
-setup(
-    name = &quot;sft&quot;,
-    version = &quot;0.1&quot;,
-    url = 'https://github.com/xumi1993/SFT',
-    author = 'Mijian Xu',
-    author_email = 'gomijianxu@gmail.com',
-    packages = find_packages(), 
-    package_dir = {'sft':'sft'},
-    entry_points = {'console_scripts':[
-            'get_events = sft.get_events:main',
-            'get_resp = sft.get_resp:main',
-            'get_stations = sft.get_stations:main',
-            'get_synthetics = sft.get_synthetics:main',
-            'get_timeseries = sft.get_timeseries:main',
-            'get_traveltime = sft.get_traveltime:main'
-            ], # 将模块中的函数当作shell命令
-            },
-    include_package_data=True,
-    zip_safe=False
-)
-</code></pre>
-
-<ul>
-<li>完成后其目录结构<br />
-<code>SFT</code> &mdash;&mdash; <code>sft</code> &mdash;&mdash; <code>get_events.py</code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; <code>get_resp.py</code> <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; ……<br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; <code>setup.py</code><br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash;  ……<br /></li>
-
-<li><p>由于这个例子只依赖Python标准库，所以如果需要依赖其他第三方模块需要在<code>setup.py</code>中加一个字段：</p>
-
-<pre><code class="language-python">install_requires=[
-    'Twisted&gt;=13.1.0',
-    'w3lib&gt;=1.17.0',
-    'queuelib',
-    'lxml',
-    'pyOpenSSL',
-    'cssselect&gt;=0.9',
-    'six&gt;=1.5.2',
-    'parsel&gt;=1.1',
-    'PyDispatcher&gt;=2.0.5',
-    'service_identity',
-]
-</code></pre>
-
-<h2 id="编译python包">编译Python包</h2>
-
-<p>使用下面命令打包一个源代码的包</p>
-
-<pre><code class="language-python">python setup.py sdist build
-</code></pre>
-
-<p>这样在当前目录的dist文件夹下，就会多出一个以tar.gz结尾的包了。</p></li>
-</ul>
-
-<h2 id="注册pypi">注册PyPI</h2>
-
-<p>打开<a href="https://pypi.python.org/pypi">PyPI</a>官网点击*Register*注册一个账户，记住用户名和密码后面要用。</p>
-
-<h2 id="发布至pypi">发布至PyPI</h2>
-
-<p>官方推荐的方式是用<code>twine</code>模块（我在试用<code>python setup.py sdist upload</code>时没有成功）:<br />
-- 安装<code>twine</code></p>
-
-<pre><code class="language-python">sudo pip install twine
+<pre><code class="language-vim">Plugin 'scrooloose/nerdtree'
 </code></pre>
 
 <ul>
-<li>上传包
-<code>python
-twine upload dist/*
-</code>
-命令行中会提示输入用户名密码，输入PyPI的用户名密码就发布成功了。</li>
+<li>在command mode下输入</li>
 </ul>
+
+<pre><code class="language-vim">:PluginInstall
+</code></pre>
+
+<p>###配置NERDTree
+在<code>~/.vimrc</code>中添加语句可以配置NERDTree。这些语句请根据个人喜好选择性添加</p>
+
+<pre><code class="language-vim">&quot; 打开NERDTree快捷键，设置为&lt;F2&gt;
+map &lt;F2&gt; :NERDTreeToggle&lt;CR&gt;
+
+&quot; 显示行号
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+&quot; 是否显示隐藏文件
+let NERDTreeShowHidden=1
+&quot; 设置宽度
+let NERDTreeWinSize=30
+&quot; 在终端启动vim时，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+&quot; 忽略以下文件的显示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+&quot; 显示书签列表
+let NERDTreeShowBookmarks=1
+
+&quot; 当vim中没有其他文件，值剩下nerdtree的时候，自动关闭窗口
+autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDTree&quot;) &amp;&amp; b:NERDTree.isTabTree()) | q | endif
+</code></pre>
+
+<h3 id="使用nerdtree">使用NERDTree</h3>
+
+<p>将窗口切换至NERDTree，可以通过快捷键对文件树进行操作。</p>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>o</td>
+<td align="center">打开关闭文件或者目录</td>
+</tr>
+
+<tr>
+<td>t</td>
+<td align="center">在标签页中打开</td>
+</tr>
+
+<tr>
+<td>T</td>
+<td align="center">在后台标签页中打开</td>
+</tr>
+
+<tr>
+<td>!</td>
+<td align="center">执行此文件</td>
+</tr>
+
+<tr>
+<td>p</td>
+<td align="center">到上层目录</td>
+</tr>
+
+<tr>
+<td>P</td>
+<td align="center">到根目录</td>
+</tr>
+
+<tr>
+<td>K</td>
+<td align="center">到第一个节点</td>
+</tr>
+
+<tr>
+<td>J</td>
+<td align="center">到最后一个节点</td>
+</tr>
+
+<tr>
+<td>u</td>
+<td align="center">打开上层目录</td>
+</tr>
+
+<tr>
+<td>m</td>
+<td align="center">显示文件系统菜单（添加、删除、移动操作）</td>
+</tr>
+
+<tr>
+<td>?</td>
+<td align="center">帮助</td>
+</tr>
+
+<tr>
+<td>q</td>
+<td align="center">关闭</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -339,7 +465,9 @@ twine upload dist/*
                     
   <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/development/">Development</a>
 
-  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/python/">Python</a>
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/vim/">Vim</a>
+
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/linux/">Linux</a>
 
                   </div>
                 
@@ -351,7 +479,7 @@ twine upload dist/*
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-tooltip="Vim 使用笔记">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -359,7 +487,7 @@ twine upload dist/*
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/" data-tooltip="Fedora26中安装Google拼音输入法">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -376,19 +504,19 @@ twine upload dist/*
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -435,7 +563,7 @@ twine upload dist/*
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-tooltip="Vim 使用笔记">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -443,7 +571,7 @@ twine upload dist/*
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--disabled">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/" data-tooltip="Fedora26中安装Google拼音输入法">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -460,19 +588,19 @@ twine upload dist/*
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -502,19 +630,19 @@ twine upload dist/*
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E9%2585%258D%25E7%25BD%25AEvim%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E9%2585%258D%25E7%25BD%25AEvim%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E5%258F%2591%25E5%25B8%2583%25E4%25BB%25A3%25E7%25A0%2581%25E5%2588%25B0pypi%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2F%25E9%2585%258D%25E7%25BD%25AEvim%25E5%25BC%2580%25E5%258F%2591%25E7%258E%25AF%25E5%25A2%2583%2F">
           <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
         </a>
       </li>
@@ -766,9 +894,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/10\/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi\/';
+          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/10\/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83\/';
           
-            this.page.identifier = '\/2017\/10\/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi\/'
+            this.page.identifier = '\/2017\/10\/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83\/'
           
         };
         (function() {

@@ -22,7 +22,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.30.2 with theme Tranquilpeak 0.4.1-BETA">
-    <title>Fedora26中安装Google拼音输入法</title>
+    <title>Vim 使用笔记</title>
     <meta name="author" content="Mijian Xu">
     <meta name="keywords" content="">
 
@@ -30,21 +30,93 @@
     
 
     
-    <meta name="description" content="在Fedora25的时候sogou拼音出现了一些不兼容的情况，从而使我转而使用Google拼音。如今操作系统已经换成了Fedora26，这里就记录下安装Google拼音的过程。
+    <meta name="description" content="目录
 
-">
-    <meta property="og:description" content="在Fedora25的时候sogou拼音出现了一些不兼容的情况，从而使我转而使用Google拼音。如今操作系统已经换成了Fedora26，这里就记录下安装Google拼音的过程。
 
-">
+Command Mode
+
+
+Cursor Motions
+Edit Command
+Window Motion
+
+Insert Mode
+Visual Mode
+Search and Replace
+
+
+Basic usage
+Replace
+Regular Expression
+Vim 中常用的替换表达式
+
+Ctags and Taglist
+
+
+Ctags Configure
+为Python标准库添加标签
+为C/C&#43;&#43;系统函数添加标签
+Taglist Configure">
+    <meta property="og:description" content="目录
+
+
+Command Mode
+
+
+Cursor Motions
+Edit Command
+Window Motion
+
+Insert Mode
+Visual Mode
+Search and Replace
+
+
+Basic usage
+Replace
+Regular Expression
+Vim 中常用的替换表达式
+
+Ctags and Taglist
+
+
+Ctags Configure
+为Python标准库添加标签
+为C/C&#43;&#43;系统函数添加标签
+Taglist Configure">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Fedora26中安装Google拼音输入法">
-    <meta property="og:url" content="/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+    <meta property="og:title" content="Vim 使用笔记">
+    <meta property="og:url" content="/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
     <meta property="og:site_name" content="Note to Tech">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Note to Tech">
-    <meta name="twitter:description" content="在Fedora25的时候sogou拼音出现了一些不兼容的情况，从而使我转而使用Google拼音。如今操作系统已经换成了Fedora26，这里就记录下安装Google拼音的过程。
+    <meta name="twitter:description" content="目录
 
-">
+
+Command Mode
+
+
+Cursor Motions
+Edit Command
+Window Motion
+
+Insert Mode
+Visual Mode
+Search and Replace
+
+
+Basic usage
+Replace
+Regular Expression
+Vim 中常用的替换表达式
+
+Ctags and Taglist
+
+
+Ctags Configure
+为Python标准库添加标签
+为C/C&#43;&#43;系统函数添加标签
+Taglist Configure">
     
     
 
@@ -209,15 +281,15 @@
             <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Fedora26中安装Google拼音输入法
+      Vim 使用笔记
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2017-10-27T12:26:29&#43;08:00">
+      <time itemprop="datePublished" datetime="2017-11-01T14:21:22&#43;08:00">
         
-  十月 27, 2017
+  十一月 1, 2017
 
       </time>
     
@@ -237,57 +309,621 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>在Fedora25的时候sogou拼音出现了一些不兼容的情况，从而使我转而使用Google拼音。如今操作系统已经换成了Fedora26，这里就记录下安装Google拼音的过程。</p>
+              <h2 id="目录">目录</h2>
 
-<p></p>
+<ul>
+<li><strong><a href="#command-mode">Command Mode</a></strong>
 
-<h2 id="输入法和输入源">输入法和输入源</h2>
+<ul>
+<li><a href="#cursor-motions">Cursor Motions</a></li>
+<li><a href="#edit-command">Edit Command</a></li>
+<li><a href="#window-motion">Window Motion</a></li>
+</ul></li>
+<li><strong><a href="#insert-mode">Insert Mode</a></strong></li>
+<li><strong><a href="#visual-mode">Visual Mode</a></strong></li>
+<li><strong><a href="#search-and-replace">Search and Replace</a></strong>
 
-<p>在Linux系统中，常用的输入源有ibus和fcitx两种，输入法又会被安装在输入源中（Google拼音在fcitx里）。这两种输入源也是不可以同时使用的。Fedora26默认的输入源是ibus（大部分Linux都是），这里带有拼音输入法，但是非常难用。所以要安装Google拼音就需要安装fcitx，并且能停用ibus。这里需要安装的主要工具有：<br />
-- fcitx
-- Googlepinyin
-- im-chooser</p>
+<ul>
+<li><a href="#basic-usage">Basic usage</a></li>
+<li><a href="#replace">Replace</a></li>
+<li><a href="#regular-expression">Regular Expression</a></li>
+<li><a href="#vim-中常用的替换表达式">Vim 中常用的替换表达式</a></li>
+</ul></li>
+<li><strong><a href="#ctags-and-taglist">Ctags and Taglist</a></strong>
 
-<h2 id="安装软件源">安装软件源</h2>
+<ul>
+<li><a href="#ctags-configure">Ctags Configure</a></li>
+<li><a href="#pythontag">为Python标准库添加标签</a></li>
+<li><a href="#systag">为C/C++系统函数添加标签</a></li>
+<li><a href="#taglist-configure">Taglist Configure</a>
+</li>
+</ul></li>
+</ul>
 
-<p><a href="https://repo.fdzh.org/">FZUG</a>是fedora的中文源，其中提供了Google拼音，详细信息如下</p>
+<h2 id="command-mode">Command Mode</h2>
 
-<pre><code>名称         : fcitx-googlepinyin
-版本         : 0.1.6
-发布         : 3.git6536e18.fc26
-架构         : x86_64
-大小         : 133 k
-Source       : fcitx-googlepinyin-0.1.6-3.git6536e18.fc26.src.rpm
-仓库         : @System
-来自仓库     : fzug-free
-小结         : Googlepinyin module for fcitx
-URL          : https://fcitx-im.org/wiki/Googlepinyin
-协议         : GPLv3
-描述         : fcitx-googlepinyin is a Googlepinyin module for fcitx.
+<h3 id="cursor-motions">Cursor Motions</h3>
 
+<ul>
+<li><code>^</code>: 回到行首</li>
+<li><code>$</code>: 回到行尾</li>
+<li><code>l</code>: 向前移动一个单词</li>
+<li><code>w</code>: 向后移动一个单词
+&gt; Note: <code>w</code>通常表示一个单词，如<code>dw</code>删除一个单词， <code>yw</code>复制一个单词，<code>cw</code>替换一个单词。</li>
+</ul>
+
+<h3 id="edit-command">Edit Command</h3>
+
+<h4 id="deletion">Deletion</h4>
+
+<ul>
+<li><code>x</code>: 删除一个字符</li>
+<li><code>dd</code>: 删除一行</li>
+<li><code>ndd</code>: 删除n行</li>
+<li><code>dw</code>: 删除一个单词</li>
+<li><code>D</code>: 删除至行尾
+&gt;  Note: 这里的删除类似于剪切，可以粘贴。</li>
+</ul>
+
+<h4 id="copy-and-paste">Copy and Paste</h4>
+
+<ul>
+<li><code>yy</code>: 复制一行</li>
+<li><code>yw</code>: 复制一个单词</li>
+<li><code>p</code>: 在光标后复制</li>
+<li><code>P</code>: 在 光标前复制</li>
+</ul>
+
+<h4 id="undo-and-redo">Undo and Redo</h4>
+
+<ul>
+<li><code>u</code>: 撤销</li>
+<li><code>&lt;ctrl&gt;r</code>: 恢复</li>
+</ul>
+
+<h3 id="window-motion">Window Motion</h3>
+
+<ul>
+<li><code>&lt;ctrl&gt;f</code> or <code>&lt;Page Down&gt;</code>: 向下翻页</li>
+<li><code>&lt;ctrl&gt;b</code> or <code>&lt;Page Up&gt;</code>: 向上翻页</li>
+<li><code>&lt;ctrl&gt;d</code>: 下滚（向下翻半页）</li>
+<li><code>&lt;ctrl&gt;u</code>: 上滚（向上翻半页）</li>
+<li><code>G</code>: 定位文件最后一行</li>
+<li><code>:n</code>: 定位到第n行</li>
+</ul>
+
+<h2 id="insert-mode">Insert Mode</h2>
+
+<ul>
+<li><code>a</code>: 光标后插入</li>
+<li><code>i</code>: 光标前插入</li>
+<li><code>:r file</code>: 在当前行之后插入文件内容</li>
+</ul>
+
+<h2 id="visual-mode">Visual Mode</h2>
+
+<ul>
+<li><code>v</code>: 进入可视模式</li>
+<li><code>V</code>: 进入可视行模式</li>
+<li><code>&lt;ctrl&gt;v</code>: 进入可视块模式</li>
+</ul>
+
+<h2 id="search-and-replace">Search and Replace</h2>
+
+<h3 id="basic-usage">Basic usage</h3>
+
+<ol>
+<li>在Command Mode 下输入<code>/xxxx</code> 后按<code>&lt;Enter&gt;</code>可在光标后搜索内容为xxxx的字段。</li>
+<li><code>n</code>: 跳转下一个字段，<code>N</code>: 跳转上一个字段。</li>
+</ol>
+
+<h3 id="replace">Replace</h3>
+
+<pre><code>Syntax:[addr]s/源字符串/目的字符串/[option]
 </code></pre>
 
-<p>所以先使用如下命令安装FZUG源</p>
+<ul>
+<li><code>addr</code>: 表示搜索范围</li>
+</ul>
 
-<pre><code>dnf install https://repo.fdzh.org/FZUG/free/26/x86_64/fzug-release-26-0.2.noarch.rpm
-</code></pre>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th align="center">功能</th>
+</tr>
+</thead>
 
-<h2 id="安装google拼音">安装Google拼音</h2>
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td align="center">当前行</td>
+</tr>
 
-<p>直接用<code>dnf</code>安装会同时安装Google拼音的依赖，比如fcitx。但是装好之后会发现没办法在fcitx和ibus直接切换，所以还需要安装im-chooser。</p>
+<tr>
+<td><code>n</code></td>
+<td align="center">第n行</td>
+</tr>
 
-<pre><code>sudo dnf install fcitx-googlepinyin im-chooser
-</code></pre>
+<tr>
+<td><code>$</code></td>
+<td align="center">最后一行</td>
+</tr>
 
-<h2 id="切换输入源">切换输入源</h2>
+<tr>
+<td><code>%</code></td>
+<td align="center">全文</td>
+</tr>
 
-<p>im-chooser的功能是切换系统的输入源，这时我们要停用ibus，启用fcitx，在终端输入：</p>
+<tr>
+<td>[addr1],[addr2]</td>
+<td align="center">指定一个范围</td>
+</tr>
+</tbody>
+</table>
 
-<pre><code>im-chooser
-</code></pre>
+<blockquote>
+<p>我们常用的范围有<code>%</code>（全文），<code>n1,n2</code>（从第n1行到n2行）。</p>
+</blockquote>
 
-<p>出现输入法选择器窗口，选择fcitx，<strong>注销后即可生效</strong>
-<img src="https://xumi1993.github.io/img/google-pinyin/im-chooser.png" alt="" /></p>
+<ul>
+<li><code>option</code></li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>g</code></td>
+<td align="center">全局替换</td>
+</tr>
+
+<tr>
+<td><code>c</code></td>
+<td align="center">替换时进行确认</td>
+</tr>
+
+<tr>
+<td><code>i</code></td>
+<td align="center">忽略大小写</td>
+</tr>
+</tbody>
+</table>
+
+<h3 id="regular-expression">Regular Expression</h3>
+
+<p>正则表达式是一种<strong>按一定规则匹配一系列文本</strong>的字符串表达式。
+&gt;&ldquo;正则表达式是烦琐的，但它是强大的，学会之后的应用会让你除了提高效率外，会给你带来绝对的成就感。&rdquo;</p>
+
+<p>这里推荐一个网站来学习正则表达式：<a href="http://www.runoob.com/regexp/regexp-tutorial.html">http://www.runoob.com/regexp/regexp-tutorial.html</a>
+Vim中的搜索和替换同样支持正则表达式。大部分语法与其他正则表达式语法相同，但有一小部分略有区别。这里列出一些规则供参考。</p>
+
+<ul>
+<li>元字符</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>.</code></td>
+<td align="center">匹配任意字符</td>
+</tr>
+
+<tr>
+<td><code>[abc]</code></td>
+<td align="center">匹配方括号中的任意一个字符，可用-表示字符范围。如<code>[a-z0-9]</code>匹配小写字母和数字</td>
+</tr>
+
+<tr>
+<td><code>[^abc]</code></td>
+<td align="center">匹配除方括号中字符之外的任意字符</td>
+</tr>
+
+<tr>
+<td><code>\d</code></td>
+<td align="center">匹配阿拉伯数字，等同于<code>[0-9]</code></td>
+</tr>
+
+<tr>
+<td><code>\D</code></td>
+<td align="center">匹配阿拉伯数字之外的任意字符，等同于<code>[^0-9]</code></td>
+</tr>
+
+<tr>
+<td><code>\x</code></td>
+<td align="center">匹配十六进制数字，等同于<code>[0-9A-Fa-f]</code></td>
+</tr>
+
+<tr>
+<td><code>\X</code></td>
+<td align="center">匹配十六进制数字之外的任意字符，等同于<code>[^0-9A-Fa-f]</code></td>
+</tr>
+
+<tr>
+<td><code>\l</code></td>
+<td align="center">匹配<code>[a-z]</code></td>
+</tr>
+
+<tr>
+<td><code>\L</code></td>
+<td align="center">匹配<code>[^a-z]</code></td>
+</tr>
+
+<tr>
+<td><code>\u</code></td>
+<td align="center">匹配<code>[A-Z]</code></td>
+</tr>
+
+<tr>
+<td><code>\U</code></td>
+<td align="center">匹配<code>[^A-Z]</code></td>
+</tr>
+
+<tr>
+<td><code>\w</code></td>
+<td align="center">匹配单词字母，等同于<code>[0-9A-Za-z_]</code></td>
+</tr>
+
+<tr>
+<td><code>\W</code></td>
+<td align="center">匹配单词字母之外的任意字符，等同于<code>[^0-9A-Za-z_]</code></td>
+</tr>
+
+<tr>
+<td><code>\t</code></td>
+<td align="center">匹配<code>&lt;tab&gt;</code>字符</td>
+</tr>
+
+<tr>
+<td><code>\s</code></td>
+<td align="center">匹配空白字符，等同于<code>[\t]</code></td>
+</tr>
+
+<tr>
+<td><code>\S</code></td>
+<td align="center">匹配非空白字符，等同于<code>[^\t]</code></td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>普通字符需转意</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>\*</code></td>
+<td align="center">匹配<code>*</code>字符</td>
+</tr>
+
+<tr>
+<td><code>\.</code></td>
+<td align="center">匹配<code>.</code> 字符</td>
+</tr>
+
+<tr>
+<td><code>\/</code></td>
+<td align="center">匹配 <code>/</code> 字符</td>
+</tr>
+
+<tr>
+<td><code>\\</code></td>
+<td align="center">匹配 <code>\</code> 字符</td>
+</tr>
+
+<tr>
+<td><code>\[</code></td>
+<td align="center">匹配 <code>[</code> 字符</td>
+</tr>
+
+<tr>
+<td><code>\]</code></td>
+<td align="center">匹配 <code>]</code> 字符</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li><p>表示数量的元字符<br />
+| 模式          | 功能      |
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-:|
+|<code>*</code>| 匹配0-任意个
+|<code>\+</code>| 匹配1-任意个
+|<code>\?</code>| 匹配0-1个
+|<code>\{n,m}</code>| 匹配n-m个
+|<code>\{n}</code>|   匹配n个
+|<code>\{n,}</code>|  匹配n-任意个
+|<code>\{,m}</code>| 匹配0-m个</p></li>
+
+<li><p>表示位置的元字符<br />
+| 模式          | 功能      |
+| &mdash;&mdash;&mdash;&mdash;- |:&mdash;&mdash;&mdash;&mdash;-:|
+|<code>$</code>| 匹配行尾
+|<code>^</code>|  匹配行首
+|<code>\&lt;</code>| 匹配单词词首
+|<code>\&gt;</code>| 匹配单词词尾</p></li>
+</ul>
+
+<h3 id="vim-中常用的替换表达式">Vim 中常用的替换表达式</h3>
+
+<h4 id="简单替换表达式">简单替换表达式</h4>
+
+<ul>
+<li><p>替换命令可以在全文中用一个单词替换另一个单词：</p>
+
+<pre><code>:%s/four/4/g
+</code></pre></li>
+
+<li><p>如果你有一个象 &ldquo;thirtyfour&rdquo; 这样的单词，上面的命令会出错。这种情况下，这个单词会被替换成&rdquo;thirty4&rdquo;。要解决这个问题，用 &ldquo;&lt;&rdquo; 来指定匹配单词开头：</p>
+
+<pre><code>:%s/\&lt;four/4/g
+</code></pre></li>
+
+<li><p>显然，这样在处理 &ldquo;fourty&rdquo; 的时候还是会出错。用 &ldquo;&gt;&rdquo; 来解决这个问题：</p>
+
+<pre><code>:%s/\&lt;four\&gt;/4/g
+</code></pre></li>
+
+<li><p>如果你在编码，你可能只想替换注释中的 &ldquo;four&rdquo;，而保留代码中的。由于这很难指定，可以在替换命令中加一个 &ldquo;c&rdquo; 标记，这样，Vim 会在每次替换前提示你：</p>
+
+<pre><code>:%s/\&lt;four\&gt;/4/gc
+</code></pre></li>
+</ul>
+
+<h4 id="删除多余的空格">删除多余的空格</h4>
+
+<ul>
+<li>要删除这些每行后面多余的空格，可以执行如下命令：
+<code>:%s/\s\+$//</code>
+匹配模式为<code>\s\+$</code>，这表示行末（<code>$</code>）前的一个或者多个（<code>\+</code>）空格（<code>\s</code>）。替换命令的部分是空的：<code>//</code>。</li>
+</ul>
+
+<h4 id="匹配重复性">匹配重复性</h4>
+
+<ul>
+<li>星号项 <code>*</code> 规定在它前面的项可以重复任意次。因此:<br />
+<code>
+/a*
+</code><br />
+匹配 &ldquo;a&rdquo;，&rdquo;aa&rdquo;，&rdquo;aaa&rdquo;，等等。但也匹配 &ldquo;&rdquo; (空字串)，因为零次也包含在内。星号 <code>*</code> 仅仅应用于那个紧邻在它前面的项。因此 <code>ab*</code> 匹配 &ldquo;a&rdquo;，&rdquo;ab&rdquo;，&rdquo;abb&rdquo;,&ldquo;abbb&rdquo;，等等。如要多次重复整个字符串，那么该字符串必须被组成一个项。组成一项的方法就是在它前面加 <code>\(</code>，后面加 <code>\)</code>。因此这个命令:<br />
+<code>
+/\(ab\)*
+</code><br />
+匹配: &ldquo;ab&rdquo;，&rdquo;abab&rdquo;，&rdquo;ababab&rdquo;，等等。而且也匹配 &ldquo;&ldquo;。要避免匹配空字串，使用 <code>\+</code>。这表示前面一项可以被匹配一次或多次。<br />
+<code>
+/ab\+
+</code><br />
+匹配 &ldquo;ab&rdquo;，&rdquo;abb&rdquo;，&rdquo;abbb&rdquo;，等等。它不匹配 后面没有跟随 &ldquo;b&rdquo; 的 &ldquo;a&rdquo;。</li>
+</ul>
+
+<h4 id="指定重复次数">指定重复次数</h4>
+
+<ul>
+<li>要匹配某一项的特定次数重复，使用 <code>\{n,m}</code> 这样的形式。其中 &ldquo;n&rdquo; 和 &ldquo;m&rdquo; 都是数字。在它前面的那个项将被重复 &ldquo;n&rdquo; 到 &ldquo;m&rdquo; 次 (包含 &ldquo;n&rdquo; 和 &ldquo;m&rdquo;)。例如:<br />
+<code>
+/ab\{3,5}
+</code><br />
+匹配 &ldquo;abbb&rdquo;，&rdquo;abbbb&rdquo; 以及 &ldquo;abbbbb&rdquo;。
+当 &ldquo;n&rdquo; 省略时，被默认为零。当 &ldquo;m&rdquo; 省略时，被默认为无限大。当 &ldquo;,m&rdquo; 省略时，就表示重复正好 &ldquo;n&rdquo; 次。例如:</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th align="center">匹配次数		</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>\{,4}</code></td>
+<td align="center">0，1，2，3 或 4</td>
+</tr>
+
+<tr>
+<td><code>\{3,}</code></td>
+<td align="center">3，4，5，等等</td>
+</tr>
+
+<tr>
+<td><code>\{0,1}</code></td>
+<td align="center">0 或 1</td>
+</tr>
+
+<tr>
+<td><code>\{0,}</code></td>
+<td align="center">0 或 更多，同 *</td>
+</tr>
+
+<tr>
+<td><code>\{1,}</code></td>
+<td align="center">1 或 更多，同 +</td>
+</tr>
+
+<tr>
+<td><code>\{3}</code></td>
+<td align="center">3</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="多选一匹配">多选一匹配</h4>
+
+<ul>
+<li>在一个查找模式中，&rdquo;或&rdquo; 运算符是 <code>\\|</code>。例如:<br />
+<code>
+/foo\|bar
+</code><br />
+这个命令匹配了 <code>foo</code> 或 <code>bar</code>。更多的抉择可以连在后面:<br />
+<code>
+/one\|two\|three
+</code><br />
+匹配 <code>one</code>，<code>two</code> 或 <code>three</code>。
+如要匹配其多次重复，那么整个抉择结构须置于 <code>\(</code> 和 <code>\)</code> 之间:<br />
+<code>
+/\(foo\|bar\)\+
+</code><br />
+这个命令匹配 <code>foo</code>，<code>foobar</code>，<code>foofoo</code>，<code>barfoobar</code>，等等。</li>
+</ul>
+
+<h4 id="变量替换">变量替换</h4>
+
+<ul>
+<li>置于 <code>\(</code> 和 <code>\)</code> 之间的字符串可以作为变量在替换是引用，例如<code>xxxx this is that xxxx</code>，我们想将这段文本中的<code>this</code>和<code>that</code>进行换位变成<code>xxxx that is this xxxx</code>，Vim的替换命令应该这样写：<br />
+<code>
+:.s/\(this\) is \(that\)/\2 is \1/
+</code><br />
+其中<code>\1</code>表示<code>this</code>，<code>\2</code>表示<code>that</code>。</li>
+</ul>
+
+<h2 id="ctags-and-taglist">Ctags and Taglist</h2>
+
+<p>Ctags可以定义项目目录下的文件所包含的结构体、函数类型、变量类型、函数名所在位置，并可以他们之间跳转。</p>
+
+<h3 id="ctags-configure">Ctags Configure</h3>
+
+<ol>
+<li>在项目目录下生成tags文件，文件记录了函数、变量等的位置和类型。<br />
+<code>
+cd /path/to/project
+ctags -R *
+</code></li>
+<li>在<code>~/.vimrc</code>中设置<br />
+<code>
+set tags=tags
+</code></li>
+<li>打开项目中的文件</li>
+<li><code>&lt;ctrl&gt;]</code>: 进入光标所指的标识符的定义</li>
+<li><code>&lt;ctrl&gt;t</code>: 回到前一个标签处</li>
+</ol>
+
+<h1 id="pythontag"></h1>
+
+<h3 id="为python标准库添加标签">为Python标准库添加标签</h3>
+
+<ol>
+<li>假设Python标准库的位置是<code>/usr/lib/python3.6</code><br />
+<code>
+ctags -R -f ~/.python.tags /usr/lib/python3.6
+</code></li>
+<li>在<code>~/.vimrc</code>中添加设置<br />
+<code>
+set tags+=~/.python.tags
+</code></li>
+</ol>
+
+<h2 id="systag"></h2>
+
+<h3 id="为c-c-系统函数添加标签">为C/C++系统函数添加标签</h3>
+
+<ol>
+<li>设置系统头文件标签<br />
+<code>
+ctags -R -f ~/.sys.tags /usr/include /usr/local/include
+</code></li>
+<li>在<code>~/.vimrc</code>中添加设置<br />
+<code>
+set tags+=~/.sys.tags
+</code></li>
+</ol>
+
+<h3 id="taglist-configure">Taglist Configure</h3>
+
+<ol>
+<li>安装Taglist，在<a href="http://vim-taglist.sourceforge.net/">Taglist</a>官网下载插件，并解压到<code>~/.vim/</code>目录中，保证该目录下存在：<br />
+<code>
+plugin/taglist.vim
+doc/taglist.txt
+</code></li>
+<li>打开项目中的文件，在Command Mode下输入<br />
+<code>
+:Tilst
+</code></li>
+<li>Taglist中常用快捷键</li>
+</ol>
+
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><code>&lt;ctrl&gt;ww</code></td>
+<td align="center">在文本窗口和Taglist窗口间切换</td>
+</tr>
+
+<tr>
+<td><code>o</code></td>
+<td align="center">在一个新打开的窗口中显示光标下tag</td>
+</tr>
+
+<tr>
+<td><code>s</code></td>
+<td align="center">更改排序方式，在按名字排序和按出现顺序排序间切换</td>
+</tr>
+
+<tr>
+<td><code>+</code></td>
+<td align="center">打开一个折叠，同zo</td>
+</tr>
+
+<tr>
+<td><code>-</code></td>
+<td align="center">将tag折叠起来，同zc</td>
+</tr>
+
+<tr>
+<td><code>*</code></td>
+<td align="center">打开所有的折叠，同zR</td>
+</tr>
+
+<tr>
+<td><code>=</code></td>
+<td align="center">将所有tag折叠起来，同zM</td>
+</tr>
+
+<tr>
+<td><code>[[</code></td>
+<td align="center">跳到前一个文件</td>
+</tr>
+
+<tr>
+<td><code>]]</code></td>
+<td align="center">跳到后一个文件</td>
+</tr>
+
+<tr>
+<td><code>q</code></td>
+<td align="center">关闭taglist窗口</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
@@ -299,9 +935,9 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">标签</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/tools/">Tools</a>
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/development/">Development</a>
 
-  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/fedora/">Fedora</a>
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/vim/">Vim</a>
 
   <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/linux/">Linux</a>
 
@@ -315,7 +951,7 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" data-tooltip="配置Vim开发环境">
+                <a class="post-action-btn btn btn--disabled">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -323,7 +959,7 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" data-tooltip="配置Vim开发环境">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -340,19 +976,19 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -399,7 +1035,7 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
         <ul class="post-actions post-action-nav">
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" data-tooltip="配置Vim开发环境">
+                <a class="post-action-btn btn btn--disabled">
               
                 <i class="fa fa-angle-left"></i>
                 <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
@@ -407,7 +1043,7 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" data-tooltip="SSH 隧道与端口转发">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" data-tooltip="配置Vim开发环境">
               
                 <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
                 <i class="fa fa-angle-right"></i>
@@ -424,19 +1060,19 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -466,19 +1102,19 @@ URL          : https://fcitx-im.org/wiki/Googlepinyin
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Ffedora26%25E4%25B8%25AD%25E5%25AE%2589%25E8%25A3%2585google%25E6%258B%25BC%25E9%259F%25B3%25E8%25BE%2593%25E5%2585%25A5%25E6%25B3%2595%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2017%2F11%2Fvim-%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
           <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Ffedora26%25E4%25B8%25AD%25E5%25AE%2589%25E8%25A3%2585google%25E6%258B%25BC%25E9%259F%25B3%25E8%25BE%2593%25E5%2585%25A5%25E6%25B3%2595%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2017%2F11%2Fvim-%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
           <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F10%2Ffedora26%25E4%25B8%25AD%25E5%25AE%2589%25E8%25A3%2585google%25E6%258B%25BC%25E9%259F%25B3%25E8%25BE%2593%25E5%2585%25A5%25E6%25B3%2595%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2017%2F11%2Fvim-%25E4%25BD%25BF%25E7%2594%25A8%25E7%25AC%2594%25E8%25AE%25B0%2F">
           <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
         </a>
       </li>
@@ -730,9 +1366,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/10\/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95\/';
+          this.page.url = 'https:\/\/xumi1993.github.io\/2017\/11\/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0\/';
           
-            this.page.identifier = '\/2017\/10\/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95\/'
+            this.page.identifier = '\/2017\/11\/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0\/'
           
         };
         (function() {

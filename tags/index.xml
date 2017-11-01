@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Note to Tech</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 26 Oct 2017 21:51:29 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 01 Nov 2017 14:21:22 +0800</lastBuildDate>
     
 	<atom:link href="https://xumi1993.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Development</title>
       <link>https://xumi1993.github.io/tags/development/</link>
-      <pubDate>Thu, 26 Oct 2017 21:51:29 +0800</pubDate>
+      <pubDate>Wed, 01 Nov 2017 14:21:22 +0800</pubDate>
       
       <guid>https://xumi1993.github.io/tags/development/</guid>
       <description></description>
@@ -32,7 +32,7 @@
     <item>
       <title>Linux</title>
       <link>https://xumi1993.github.io/tags/linux/</link>
-      <pubDate>Fri, 27 Oct 2017 12:26:29 +0800</pubDate>
+      <pubDate>Wed, 01 Nov 2017 14:21:22 +0800</pubDate>
       
       <guid>https://xumi1993.github.io/tags/linux/</guid>
       <description></description>
@@ -62,6 +62,15 @@
       <pubDate>Fri, 27 Oct 2017 12:26:29 +0800</pubDate>
       
       <guid>https://xumi1993.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://xumi1993.github.io/tags/vim/</link>
+      <pubDate>Wed, 01 Nov 2017 14:21:22 +0800</pubDate>
+      
+      <guid>https://xumi1993.github.io/tags/vim/</guid>
       <description></description>
     </item>
     
