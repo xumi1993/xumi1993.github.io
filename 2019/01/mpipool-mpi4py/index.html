@@ -1,5 +1,9 @@
 
 
+  
+    
+  
+
 
   
 
@@ -53,25 +57,26 @@ code.has-jax {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.49 with theme Tranquilpeak 0.4.1-BETA">
-    <title>Posts</title>
+    <title>Mpipool Mpi4py</title>
     <meta name="author" content="Mijian Xu">
     <meta name="keywords" content="">
 
     <link rel="icon" href="https://xumi1993.github.io/favicon.png">
     
-      <link rel="alternate" type="application/rss+xml" title="RSS" href="https://xumi1993.github.io/post/index.xml">
-    
 
     
-    <meta name="description" content="Hugo tranquilpeak theme demo">
-    <meta property="og:description" content="Hugo tranquilpeak theme demo">
+    <meta name="description" content="mpi4py is a python API for MPI. MPIPoolExecutor is a subclass of mpi4py.futures to create MPI processes to execute calls asynchronously
+">
+    <meta property="og:description" content="mpi4py is a python API for MPI. MPIPoolExecutor is a subclass of mpi4py.futures to create MPI processes to execute calls asynchronously
+">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Posts">
-    <meta property="og:url" content="/post/">
+    <meta property="og:title" content="Mpipool Mpi4py">
+    <meta property="og:url" content="/2019/01/mpipool-mpi4py/">
     <meta property="og:site_name" content="Note to Tech">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Note to Tech">
-    <meta name="twitter:description" content="Hugo tranquilpeak theme demo">
+    <meta name="twitter:description" content="mpi4py is a python API for MPI. MPIPoolExecutor is a subclass of mpi4py.futures to create MPI processes to execute calls asynchronously
+">
     
     
 
@@ -106,7 +111,7 @@ code.has-jax {
 
   <body>
     <div id="blog">
-      <header id="header" data-behavior="2">
+      <header id="header" data-behavior="5">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
     <a class="header-title-link" href="https://xumi1993.github.io/">Note to Tech</a>
@@ -126,7 +131,7 @@ code.has-jax {
   
 </header>
 
-      <nav id="sidebar" data-behavior="2">
+      <nav id="sidebar" data-behavior="5">
   <div class="sidebar-container">
     
       <div class="sidebar-profile">
@@ -226,35 +231,20 @@ code.has-jax {
 
       
 
-      <div id="main" data-behavior="2"
+      <div id="main" data-behavior="5"
         class="
                hasCoverMetaIn
                ">
-        <section class="postShorten-group main-content-wrap">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
           
           
-            
+            <div class="post-header main-content-wrap text-left">
   
-    
-      
-        
-      
-    
+    <h1 class="post-title" itemprop="headline">
+      Mpipool Mpi4py
+    </h1>
   
-
-
   
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
-          Mpipool Mpi4py
-        </a>
-      </h1>
-      
   <div class="postShorten-meta post-meta">
     
       <time itemprop="datePublished" datetime="2019-01-03T13:31:58&#43;08:00">
@@ -275,344 +265,166 @@ code.has-jax {
 
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p><a href="http://mpi4py.readthedocs.io/en/stable/index.html">mpi4py</a> is a python API for MPI. <strong>MPIPoolExecutor</strong> is a subclass of <code>mpi4py.futures</code> to create MPI processes to execute calls asynchronously
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p><a href="http://mpi4py.readthedocs.io/en/stable/index.html">mpi4py</a> is a python API for MPI. <strong>MPIPoolExecutor</strong> is a subclass of <code>mpi4py.futures</code> to create MPI processes to execute calls asynchronously
 </p>
-      <p>
-        <a href="https://xumi1993.github.io/2019/01/mpipool-mpi4py/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
 
-          
-            
-  
-    
-      
-        
-      
-    
-  
+<blockquote>
+<p>The <strong>MPIPoolExecutor</strong> class uses a pool of MPI processes to execute calls asynchronously. By performing computations in separate processes, it allows to side-step the <a href="https://docs.python.org/3/glossary.html#term-global-interpreter-lock">Global Interpreter Lock</a> but also means that only picklable objects can be executed and returned. The <code>__main__</code> module must be importable by worker processes</p>
+</blockquote>
 
+<h2 id="test-script">Test Script</h2>
 
-  
+<p>The test script shows a way to calculate $2^{x}$ in a loop</p>
 
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-          Vim 使用笔记
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-11-01T14:21:22&#43;08:00">
-        
-  十一月 1, 2017
+<pre><code class="language-python">from mpi4py.futures import MPIPoolExecutor
 
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
-    
-  
-
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <h2 id="目录">目录</h2>
+executor = MPIPoolExecutor(max_workers=100)
+for result in executor.map(pow, [2]*32, range(32)):
+    print(result)
+</code></pre>
 
 <ul>
-<li><strong><a href="#command-mode">Command Mode</a></strong>
-
-<ul>
-<li><a href="#cursor-motions">Cursor Motions</a></li>
-<li><a href="#edit-command">Edit Command</a></li>
-<li><a href="#window-motion">Window Motion</a></li>
-</ul></li>
-<li><strong><a href="#insert-mode">Insert Mode</a></strong></li>
-<li><strong><a href="#visual-mode">Visual Mode</a></strong></li>
-<li><strong><a href="#search-and-replace">Search and Replace</a></strong>
-
-<ul>
-<li><a href="#basic-usage">Basic usage</a></li>
-<li><a href="#replace">Replace</a></li>
-<li><a href="#regular-expression">Regular Expression</a></li>
-<li><a href="#vim-中常用的替换表达式">Vim 中常用的替换表达式</a></li>
-</ul></li>
-<li><strong><a href="#ctags-and-taglist">Ctags and Taglist</a></strong>
-
-<ul>
-<li><a href="#ctags-configure">Ctags Configure</a></li>
-<li><a href="#pythontag">为Python标准库添加标签</a></li>
-<li><a href="#systag">为C/C++系统函数添加标签</a></li>
-<li><a href="#taglist-configure">Taglist Configure</a>
-      <p>
-        <a href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-            
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">
-          配置Vim开发环境
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-10-29T21:51:29&#43;08:00">
-        
-  十月 29, 2017
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
-    
-  
-
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>配置一个优秀个开发环境可以极大地提高开发效率，在Linux里Vim是最常用的开发环境之一（emacs也是相当不错的，但鄙人是Vim的忠实粉丝），我们一般所说的开发环境包括了</p>
-
-<ul>
-<li>代码高亮</li>
-<li>文件树</li>
-<li>配色方案</li>
-<li>自动缩进</li>
-<li>代码补全</li>
+<li><code>executor</code> is an instance of <code>MPIPoolExecutor</code> with <code>max_workers</code> of 100</li>
+<li>Calculate $2^x$ in a <code>map</code> where $x$ set from 0 to 31</li>
 </ul>
 
-<p>这里就Linux中配置这些功能做一个简单的介绍</p>
+<h2 id="time-length-running">Time length running</h2>
 
-<p></p>
-      <p>
-        <a href="https://xumi1993.github.io/2017/10/%E9%85%8D%E7%BD%AEvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
+<pre><code class="language-python">starttime = time.time()
+......
+endtime = time.time()
+print('Running for %6.3fs' % endtime - starttime)
+</code></pre>
 
-          
+<h2 id="run-this-script-via-mpiexec">Run this script via mpiexec</h2>
+
+<p>script for MPIPoolExecutor could run via mpiexec in <a href="http://mpi4py.readthedocs.io/en/stable/mpi4py.futures.html#command-line">command line</a></p>
+
+<pre><code class="language-bash">mpiexec -n 100 python -m mpi4py.futures MpiPool.py
+</code></pre>
+
+<p>the script would be execute with 100 cores</p>
+
+<h2 id="comparision">Comparision</h2>
+
+<ul>
+<li><strong>2.7007s</strong> running with 1 core</li>
+<li><strong>0.1527s</strong> running with 100 core</li>
+</ul>
+
+<h2 id="test-script-1">Test script</h2>
+
+<pre><code class="language-Python">from mpi4py.futures import MPIPoolExecutor
+import time
+
+if __name__ == '__main__':
+    executor = MPIPoolExecutor(max_workers=100)
+    starttime = time.time()
+    for result in executor.map(pow, [2]*32, range(32)):
+        print(result)
+    endtime = time.time()
+    print('Running for %6.3fs' % endtime - starttime)
+
+</code></pre>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
             
-  
-    
-      
-        
-      
-    
-  
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/python/">Python</a>
 
+  <a class="tag tag--primary tag--small" href="https://xumi1993.github.io/tags/mpi/">Mpi</a>
 
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/">
-          Fedora26中安装Google拼音输入法
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-10-27T12:26:29&#43;08:00">
-        
-  十月 27, 2017
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
-    
-  
-
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>在Fedora25的时候sogou拼音出现了一些不兼容的情况，从而使我转而使用Google拼音。如今操作系统已经换成了Fedora26，这里就记录下安装Google拼音的过程。</p>
-
-<p></p>
-      <p>
-        <a href="https://xumi1993.github.io/2017/10/fedora26%E4%B8%AD%E5%AE%89%E8%A3%85google%E6%8B%BC%E9%9F%B3%E8%BE%93%E5%85%A5%E6%B3%95/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
+                  </div>
+                
+              
             
-  
-    
-      
-        
-      
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/">
-          SSH 隧道与端口转发
-        </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-10-26T21:51:29&#43;08:00">
-        
-  十月 26, 2017
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/linux">Linux</a>
-    
-  
-
-
-  </div>
-
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <h2 id="ssh-tunnel">SSH tunnel</h2>
-
-<p>中文可以称为SSH隧道，是SSH的一项非常重要的功能。它可以建立一条安全的SSH通道，并把任意的TCP连接放到这条通道中。通过建立这条隧道，用户可以从客户端直接访问服务器端基于TCP协议的服务如HTTP。</p>
-
-<p></p>
-      <p>
-        <a href="https://xumi1993.github.io/2017/10/ssh-%E9%9A%A7%E9%81%93%E4%B8%8E%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
             
-  
-    
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-tooltip="Vim 使用笔记">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
       
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
         
       
-    
-  
-
-
-  
-
-<article class="postShorten postShorten--thumbnailimg-bottom" itemscope itemType="http://schema.org/BlogPosting">
-  <div class="postShorten-wrap">
-    
-    <div class="postShorten-header">
-      <h1 class="postShorten-title" itemprop="headline">
-        <a class="link-unstyled" href="https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/">
-          发布代码到PyPI
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
         </a>
-      </h1>
-      
-  <div class="postShorten-meta post-meta">
-    
-      <time itemprop="datePublished" datetime="2017-10-23T21:51:29&#43;08:00">
-        
-  十月 23, 2017
-
-      </time>
-    
-    
-  
-  
-    <span>发布在</span>
-    
-      <a class="category-link" href="https://xumi1993.github.io/categories/python">Python</a>
-    
-  
-
-
+      </li>
+    </ul>
   </div>
 
-    </div>
-    <div class="postShorten-excerpt" itemprop="articleBody">
-      <p>作为开发者我们希望自己开发的Python模块可以被更多人使用，为了方便使用，<a href="https://pypi.python.org/pypi">PyPI</a>是管理Python模块最好用的工具之一。所以我们也希望把自己的代码放到PyPI上，以后就可以通过<code>pip install module</code>的方式安装模块了。</p>
 
-<p></p>
-      <p>
-        <a href="https://xumi1993.github.io/2017/10/%E5%8F%91%E5%B8%83%E4%BB%A3%E7%A0%81%E5%88%B0pypi/" class="postShorten-excerpt_link link">阅读全文</a>
-        
-      </p>
-    </div>
-  </div>
-  
-</article>
-
-          
-          
-
-        </section>
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
     &copy; 2019 Mijian Xu. All Rights Reserved
@@ -620,6 +432,100 @@ code.has-jax {
 </footer>
 
       </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                <i class="fa fa-angle-left"></i>
+                <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+              </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://xumi1993.github.io/2017/11/vim-%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" data-tooltip="Vim 使用笔记">
+              
+                <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </li>
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://xumi1993.github.io/2019/01/mpipool-mpi4py/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="5">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fxumi1993.github.io%2F2019%2F01%2Fmpipool-mpi4py%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fxumi1993.github.io%2F2019%2F01%2Fmpipool-mpi4py%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fxumi1993.github.io%2F2019%2F01%2Fmpipool-mpi4py%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
     </div>
     
     <div id="about">
@@ -877,6 +783,32 @@ $(document).ready(function() {
   });
 });
 </script>
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/xumi1993.github.io\/2019\/01\/mpipool-mpi4py\/';
+          
+            this.page.identifier = '\/2019\/01\/mpipool-mpi4py\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
 
 
 
