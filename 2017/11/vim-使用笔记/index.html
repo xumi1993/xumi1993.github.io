@@ -24,8 +24,8 @@
         src="https://cdn.bootcss.com/mathjax/2.7.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 MathJax.Hub.Config({
   tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']],
-    displayMath: [['$$','$$'], ['\[\[','\]\]']],
+    inlineMath: [['$','$']],
+    displayMath: [['$$','$$']],
     processEscapes: true,
     processEnvironments: true,
     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
@@ -890,10 +890,7 @@ Vim中的搜索和替换同样支持正则表达式。大部分语法与其他�
 <h4 id="变量替换">变量替换</h4>
 
 <ul>
-<li>置于 <code>\(</code> 和 <code>\)</code> 之间的字符串可以作为变量在替换是引用，例如<code>xxxx this is that xxxx</code>，我们想将这段文本中的<code>this</code>和<code>that</code>进行换位变成<code>xxxx that is this xxxx</code>，Vim的替换命令应该这样写：<br />
-<code>
-:.s/\(this\) is \(that\)/\2 is \1/
-</code><br />
+<li>置于 <code>\(</code> 和 <code>\)</code> 之间的字符串可以作为变量在替换是引用，例如<code>xxxx this is that xxxx</code>，我们想将这段文本中的<code>this</code>和<code>that</code>进行换位变成<code>xxxx that is this xxxx</code>，Vim的替换命令应该这样写：<code>:.s/\( this \) is \(that\)/\2 is \1/</code>
 其中<code>\1</code>表示<code>this</code>，<code>\2</code>表示<code>that</code>。</li>
 </ul>
 
