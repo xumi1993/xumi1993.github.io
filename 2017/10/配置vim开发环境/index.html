@@ -487,6 +487,59 @@ autocmd bufenter * if (winnr(&quot;$&quot;) == 1 &amp;&amp; exists(&quot;b:NERDT
 </tr>
 </tbody>
 </table>
+
+<h2 id="自动注释与段注释插件-nerdcommenter">自动注释与段注释插件：NerdCommenter</h2>
+
+<p>这是一个对代码进行快速注释的插件。在很多图形化IDE中<code>&lt;Ctrl-/&gt;</code>经常用来表示对光标所在行或选中行的注释。NerdCommenter可以帮助我们在vim中使用这些功能。<br />
+项目主页：<a href="https://github.com/scrooloose/nerdcommenter">https://github.com/scrooloose/nerdcommenter</a></p>
+
+<h3 id="安装插件-2">安装插件</h3>
+
+<ul>
+<li>在<code>~/.vimrc</code>的<code>vundle</code>段中添加</li>
+</ul>
+
+<pre><code class="language-vim">Plugin 'scrooloose/nerdtree'
+</code></pre>
+
+<ul>
+<li>在command mode下输入</li>
+</ul>
+
+<pre><code class="language-vim">:PluginInstall
+</code></pre>
+
+<h3 id="初次使用nerdcommenter">初次使用NerdCommenter</h3>
+
+<p>在没有任何配置的情况下插件已经可以使用了。具体说明可以查看<code>:help NERDCommenter</code>。最简单的注释/取消注释是通过<code>&lt;Leader&gt;c&lt;Space&gt;</code>实现的。</p>
+
+<blockquote>
+<p>vim的<code>&lt;Leader&gt;</code>键默认是<code>\</code>。</p>
+</blockquote>
+
+<h3 id="配置nerdcommenter">配置NerdCommenter</h3>
+
+<p>其实这个插件做的很不错了，几乎不需要太多的配置我只是根据个人习惯做了些小修改:</p>
+
+<pre><code>let g:NERDSpaceDelims = 1
+imap &lt;D-/&gt; &lt;Esc&gt;&lt;leader&gt;c&lt;Space&gt;a
+imap &lt;C-_&gt; &lt;Esc&gt;&lt;leader&gt;c&lt;Space&gt;a
+map &lt;C-_&gt; &lt;Leader&gt;c&lt;Space&gt;
+vmap &lt;C-_&gt; &lt;Leader&gt;c&lt;Space&gt;
+</code></pre>
+
+<ul>
+<li>第一行：在代码和注释间加一个空格。</li>
+<li>第二行：应为我用的是Mac电脑所以对于单行注释空<code>&lt;cmd-/&gt;</code>代替。</li>
+<li>第三～五行：用<code>&lt;Ctrl-_&gt;</code>进行单行或多行注释。</li>
+</ul>
+
+<blockquote>
+<ul>
+<li><code>&lt;cmd-/&gt;</code>只能进行单行注释的原因是这个快捷键有可能被图像窗口（MacVim或终端）的快捷键冲突。</li>
+<li>这里不用<code>&lt;Ctrl-/&gt;</code>的原因是这个快捷键被Vim本身注册了。详见：<a href="https://stackoverflow.com/questions/9051837/how-to-map-c-to-toggle-comments-in-vim">How to map <code>&lt;C-/&gt;</code> to toggle comments in vim?</a></li>
+</ul>
+</blockquote>
               
             </div>
           </div>
