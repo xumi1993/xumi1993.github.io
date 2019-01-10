@@ -315,10 +315,9 @@ setup(
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; ……<br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash; <code>setup.py</code><br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &mdash;  ……<br /></li>
-
-<li><p>由于这个例子只依赖Python标准库，所以如果需要依赖其他第三方模块需要在<code>setup.py</code>中加一个字段：</p>
-
-<pre><code class="language-python">install_requires=[
+<li>由于这个例子只依赖Python标准库，所以如果需要依赖其他第三方模块需要在<code>setup.py</code>中加一个字段：
+<code>python
+install_requires=[
     'Twisted&gt;=13.1.0',
     'w3lib&gt;=1.17.0',
     'queuelib',
@@ -330,7 +329,8 @@ setup(
     'PyDispatcher&gt;=2.0.5',
     'service_identity',
 ]
-</code></pre>
+</code></li>
+</ul>
 
 <h2 id="编译python包">编译Python包</h2>
 
@@ -339,27 +339,28 @@ setup(
 <pre><code class="language-python">python setup.py sdist build
 </code></pre>
 
-<p>这样在当前目录的dist文件夹下，就会多出一个以tar.gz结尾的包了。</p></li>
-</ul>
+<p>这样在当前目录的dist文件夹下，就会多出一个以tar.gz结尾的包了。</p>
 
 <h2 id="注册pypi">注册PyPI</h2>
 
-<p>打开<a href="https://pypi.python.org/pypi">PyPI</a>官网点击*Register*注册一个账户，记住用户名和密码后面要用。</p>
+<p>打开<a href="https://pypi.python.org/pypi">PyPI</a>官网点击<strong>Register</strong>注册一个账户，记住用户名和密码后面要用。</p>
 
 <h2 id="发布至pypi">发布至PyPI</h2>
 
-<p>官方推荐的方式是用<code>twine</code>模块（我在试用<code>python setup.py sdist upload</code>时没有成功）:<br />
-- 安装<code>twine</code></p>
-
-<pre><code class="language-python">sudo pip install twine
-</code></pre>
+<p>官方推荐的方式是用<code>twine</code>模块（我在试用<code>python setup.py sdist upload</code>时没有成功）:</p>
 
 <ul>
-<li>上传包
-<code>python
-twine upload dist/*
-</code>
-命令行中会提示输入用户名密码，输入PyPI的用户名密码就发布成功了。</li>
+<li><p>安装<code>twine</code></p>
+
+<pre><code class="language-python">sudo pip install twine
+</code></pre></li>
+
+<li><p>上传包</p>
+
+<pre><code class="language-python">twine upload dist/*
+</code></pre>
+
+<p>命令行中会提示输入用户名密码，输入PyPI的用户名密码就发布成功了。</p></li>
 </ul>
               
             </div>
