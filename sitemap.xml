@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://xumi1993.github.io/2019/02/%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98%E8%BD%B4%E4%BD%93%E5%B0%8F%E8%AE%B0%E4%B8%80cherry/</loc>
+    <lastmod>2019-02-01T17:57:29+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://xumi1993.github.io/2019/01/mpipool-mpi4py/</loc>
     <lastmod>2019-01-03T13:31:58+08:00</lastmod>
   </url>
@@ -55,6 +60,18 @@
   </url>
   
   <url>
+    <loc>https://xumi1993.github.io/tags/keyboard/</loc>
+    <lastmod>2019-02-01T17:57:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://xumi1993.github.io/categories/keyboard/</loc>
+    <lastmod>2019-02-01T17:57:29+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://xumi1993.github.io/tags/linux/</loc>
     <lastmod>2017-11-01T14:21:22+08:00</lastmod>
     <priority>0</priority>
@@ -74,13 +91,13 @@
   
   <url>
     <loc>https://xumi1993.github.io/</loc>
-    <lastmod>2019-01-03T13:31:58+08:00</lastmod>
+    <lastmod>2019-02-01T17:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://xumi1993.github.io/post/</loc>
-    <lastmod>2019-01-03T13:31:58+08:00</lastmod>
+    <lastmod>2019-02-01T17:57:29+08:00</lastmod>
     <priority>0</priority>
   </url>
   
