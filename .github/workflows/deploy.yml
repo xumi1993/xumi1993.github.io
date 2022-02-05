@@ -1,0 +1,40 @@
+#
+# Build and deploy the documentation
+#
+name: Deploy
+
+# Run on main branch only
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2.5.0
+        with:
+          hugo-version: 0.91.0
+          extended: true
+
+      - name: Build the website
+        run: make all
+
+      - name: Deploy to xumijian.me
+        uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
+        with:
+          personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          # Only keep the latest commit to avoid bloating the repository
+          force_orphan: true
+          cname: xumijian.me
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
