@@ -32,6 +32,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@068dc23d9710f1ba62e86896f84735d869951305
         with:
           personal_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
           publish_dir: ./public
           # Only keep the latest commit to avoid bloating the repository
           force_orphan: true
